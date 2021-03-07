@@ -1,0 +1,14 @@
+- In het document zie ik niet de juiste versie van de ERD.
+- Klant zou ik veranderen naar user (gebruiker), je kan ook een nieuwe medewerker, en die gaat ook een account moeten hebben!
+- Er mist nog deze statement "CREATE DATABASE IF NOT EXISTS brabotica;"
+- Inleiding:
+
+	MYSQL is een populair en veel gebruikt DBMS-systeem, De broncode van MYSQL is beschikbaar onder de GNU GPL. Het project is eigendom van en wordt onderhouden door Oracle Corporation.
+    Het is een RDBMS (Relational Database Management System) en werkt voornamelijk op het relationele databasemodel. Het maakt databasebeheer eenvoudiger en flexibeler.
+    Alleeen de adminstrator en de developers  zouden bepalde gegevens kunnen gebruiken, zoals [host, username, password, port]
+
+
+
+
+
+
