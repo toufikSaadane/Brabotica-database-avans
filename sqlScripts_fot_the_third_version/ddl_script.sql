@@ -1,9 +1,8 @@
-CREATE
-DATABASE IF NOT EXISTS `brabotica`;
-USE
-`brabotica`;
-SET
-FOREIGN_KEY_CHECKS=0;
+CREATE DATABASE IF NOT EXISTS `brabotica`;
+USE `brabotica`;
+
+SET FOREIGN_KEY_CHECKS=0;
+
 DROP TABLE IF EXISTS `role`;
 DROP TABLE IF EXISTS `address`;
 DROP TABLE IF EXISTS `user`;
@@ -13,6 +12,7 @@ DROP TABLE IF EXISTS `product_category`;
 DROP TABLE IF EXISTS `product`;
 DROP TABLE IF EXISTS `order_product`;
 DROP TABLE IF EXISTS `order`;
+
 CREATE TABLE `role`
 (
     `id`          int(11) NOT NULL AUTO_INCREMENT,
@@ -20,6 +20,7 @@ CREATE TABLE `role`
     `description` longtext,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
+
 CREATE TABLE `address`
 (
     `id`           int(11) NOT NULL AUTO_INCREMENT,
@@ -30,6 +31,7 @@ CREATE TABLE `address`
     `country`      varchar(255) NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
+
 CREATE TABLE `user`
 (
     `id`         int(11) NOT NULL AUTO_INCREMENT,
@@ -42,6 +44,7 @@ CREATE TABLE `user`
     FOREIGN KEY (`role_id`) REFERENCES `role` (`id`),
     FOREIGN KEY (`address_id`) REFERENCES `address` (`id`)
 ) ENGINE=InnoDB;
+
 CREATE TABLE `category`
 (
     `id`         int(11) NOT NULL AUTO_INCREMENT,
@@ -49,6 +52,7 @@ CREATE TABLE `category`
     `desciption` longtext     NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
+
 CREATE TABLE `discount`
 (
     `id`    int(11) NOT NULL AUTO_INCREMENT,
@@ -56,7 +60,6 @@ CREATE TABLE `discount`
     `value` decimal(5, 2) NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
-
 
 CREATE TABLE `product_category`
 (
@@ -67,6 +70,7 @@ CREATE TABLE `product_category`
     FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE CASCADE,
     FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB;
+
 CREATE TABLE `product`
 (
     `id`          int(11) NOT NULL AUTO_INCREMENT,
@@ -77,6 +81,7 @@ CREATE TABLE `product`
     PRIMARY KEY (`id`),
     FOREIGN KEY (`discount_id`) REFERENCES `discount` (`id`)
 ) ENGINE=InnoDB;
+
 CREATE TABLE `order_product`
 (
     `order_id`   int(11) NOT NULL,
@@ -85,6 +90,7 @@ CREATE TABLE `order_product`
     FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE CASCADE,
     FOREIGN KEY (`order_id`) REFERENCES `order` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB;
+
 CREATE TABLE `order`
 (
     `id`             int(11) NOT NULL AUTO_INCREMENT,
@@ -96,6 +102,4 @@ CREATE TABLE `order`
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
-
-SET
-FOREIGN_KEY_CHECKS=1;
+SET FOREIGN_KEY_CHECKS=1;
