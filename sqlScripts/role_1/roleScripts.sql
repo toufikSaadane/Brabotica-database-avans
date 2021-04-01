@@ -2,11 +2,9 @@
   the insert statememt
  */
 INSERT INTO role (title, description)
-VALUES ('medewerker', 'the klant kan deze role gebruiken om zijn shoping te kunnen voltooien');
-
-INSERT INTO role (title, description)
-VALUES ('klant', 'de medewerker kan producten teovoegen, deleten, en veranderen');
-
+VALUES ('medewerker', 'de medewerker moet geristreerd zijn om zijn werkzaamheiden te kunnen uitvoeren'),
+       ('klant', 'klant moet zich registreren om de bestelling te kunnen maken, als de klant is al geregistreed dan moet hij inloggen om de bestelling voltooien'),
+       ('admin', 'admin is de database te organiseren en in elkaar te zetten dat de bedrijfsprocessen kunnen vlot lopen');
 /**
   the uodate statememt
  */
@@ -17,7 +15,6 @@ WHERE title = 'klant';
 /**
   the delete statememt
  */
-
 DELETE
 FROM role
 WHERE title = 'updated klant';

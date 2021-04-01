@@ -15,93 +15,93 @@ DROP TABLE IF EXISTS `order`;
 
 CREATE TABLE `role`
 (
-    `id`          int(11) NOT NULL AUTO_INCREMENT,
+    `roleNumber`          int(11) NOT NULL AUTO_INCREMENT,
     `title`       varchar(255) NOT NULL,
     `description` longtext,
-    PRIMARY KEY (`id`)
+    PRIMARY KEY (`roleNumber`)
 ) ENGINE=InnoDB;
 
 CREATE TABLE `address`
 (
-    `id`           int(11) NOT NULL AUTO_INCREMENT,
+    `addressNumber`           int(11) NOT NULL AUTO_INCREMENT,
     `street`       varchar(255) NOT NULL,
     `postal_code`  varchar(255) NOT NULL,
     `house_number` varchar(5)   NOT NULL,
     `city`         varchar(25)  NOT NULL,
     `country`      varchar(255) NOT NULL,
-    PRIMARY KEY (`id`)
+    PRIMARY KEY (`addressNumber`)
 ) ENGINE=InnoDB;
 
 CREATE TABLE `user`
 (
-    `id`         int(11) NOT NULL AUTO_INCREMENT,
-    `role_id`    int(11) DEFAULT NULL,
-    `address_id` int(11) DEFAULT NULL,
+    `userNumber`         int(11) NOT NULL AUTO_INCREMENT,
+    `role_roleNumber`    int(11) DEFAULT NULL,
+    `address_addressNumber` int(11) DEFAULT NULL,
     `first_name` varchar(255) NOT NULL,
     `last_name`  varchar(255) NOT NULL,
     `email`      varchar(255) NOT NULL,
-    PRIMARY KEY (`id`),
-    FOREIGN KEY (`role_id`) REFERENCES `role` (`id`),
-    FOREIGN KEY (`address_id`) REFERENCES `address` (`id`)
+    PRIMARY KEY (`userNumber`),
+    FOREIGN KEY (`role_roleNumber`) REFERENCES `role` (`roleNumber`),
+    FOREIGN KEY (`address_addressNumber`) REFERENCES `address` (`addressNumber`)
 ) ENGINE=InnoDB;
 
 CREATE TABLE `category`
 (
-    `id`         int(11) NOT NULL AUTO_INCREMENT,
+    `categoryNumber`         int(11) NOT NULL AUTO_INCREMENT,
     `name`       varchar(255) NOT NULL,
     `desciption` longtext     NOT NULL,
-    PRIMARY KEY (`id`)
+    PRIMARY KEY (`categoryNumber`)
 ) ENGINE=InnoDB;
 
 CREATE TABLE `discount`
 (
-    `id`    int(11) NOT NULL AUTO_INCREMENT,
+    `discountNumber`    int(11) NOT NULL AUTO_INCREMENT,
     `type`  varchar(10)   NOT NULL,
     `value` decimal(5, 2) NOT NULL,
-    PRIMARY KEY (`id`)
+    PRIMARY KEY (`discountNumber`)
 ) ENGINE=InnoDB;
 
 CREATE TABLE `product_category`
 (
-    `product_id`  int(11) NOT NULL,
-    `category_id` int(11) NOT NULL,
-    PRIMARY KEY (`product_id`, `category_id`),
+    `product_productNumber`  int(11) NOT NULL,
+    `category_categoryNumber` int(11) NOT NULL,
+    PRIMARY KEY (`product_productNumber`, `category_categoryNumber`),
 
-    FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE CASCADE,
-    FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE CASCADE
+    FOREIGN KEY (`category_categoryNumber`) REFERENCES `category` (`categoryNumber`) ON DELETE CASCADE,
+    FOREIGN KEY (`product_productNumber`) REFERENCES `product` (`productNumber`) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
 CREATE TABLE `product`
 (
-    `id`          int(11) NOT NULL AUTO_INCREMENT,
-    `discount_id` int(11) DEFAULT NULL,
+    `productNumber`          int(11) NOT NULL AUTO_INCREMENT,
+    `discount_discountNumber` int(11) DEFAULT NULL,
     `name`        varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
     `price`       decimal(10, 0)                          NOT NULL,
     `stock`       int(11) NOT NULL,
-    PRIMARY KEY (`id`),
-    FOREIGN KEY (`discount_id`) REFERENCES `discount` (`id`)
+    PRIMARY KEY (`productNumber`),
+    FOREIGN KEY (`discount_discountNumber`) REFERENCES `discount` (`discountNumber`)
 ) ENGINE=InnoDB;
 
 CREATE TABLE `order_product`
 (
-    `order_id`   int(11) NOT NULL,
-    `product_id` int(11) NOT NULL,
-    PRIMARY KEY (`order_id`, `product_id`),
-    FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE CASCADE,
-    FOREIGN KEY (`order_id`) REFERENCES `order` (`id`) ON DELETE CASCADE
+    `order_orderNumber`   int(11) NOT NULL,
+    `product_productNumber` int(11) NOT NULL,
+    PRIMARY KEY (`order_orderNumber`, `product_productNumber`),
+    FOREIGN KEY (`product_productNumber`) REFERENCES `product` (`productNumber`) ON DELETE CASCADE,
+    FOREIGN KEY (`order_orderNumber`) REFERENCES `order` (`orderNumber`) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
 CREATE TABLE `order`
 (
-    `id`             int(11) NOT NULL AUTO_INCREMENT,
+    `orderNumber`             int(11) NOT NULL AUTO_INCREMENT,
     `payment_method` varchar(255)   NOT NULL,
-    `user_id`        int(11) NOT NULL,
+    `user_userNumber`        int(11) NOT NULL,
     `total_price`    decimal(10, 2) NOT NULL,
     `status`         varchar(255)   NOT NULL,
     `order_date`     date           NOT NULL,
     `shipment_date`  date DEFAULT NULL,
-    PRIMARY KEY (`id`),
-    FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
+    PRIMARY KEY (`orderNumber`),
+    FOREIGN KEY (`user_userNumber`) REFERENCES `user` (`userNumber`)
 ) ENGINE=InnoDB;
 
 SET FOREIGN_KEY_CHECKS=1;
