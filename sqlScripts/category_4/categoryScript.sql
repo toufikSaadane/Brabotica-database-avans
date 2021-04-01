@@ -1,8 +1,13 @@
 /**
   the insert statememt
  */
+
 INSERT INTO category (name, description)
-VALUES ('somewhere','nogsomewhere');
+VALUES ('educatieve','helpt kinderen met de ontwikkeling van het logisch denkvermogen en probleemoplossende vaardigheden'),
+       ('ontwikkeling','spelenderwijs leren programmeren'),
+       ('intrudctie tot programmeren','helpen om eerste stappen in het codeeruniversum te zetten'),
+       ('meetkunde','helpt kinderen met de ontwikkeling van de rekenkunde vaardigheden'),
+       ('rekenkunde','helpt kinderen met de ontwikkeling van de meetkunde vaardigheden');
 
 /**
   the uodate statememt

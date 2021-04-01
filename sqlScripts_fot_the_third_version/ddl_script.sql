@@ -49,14 +49,14 @@ CREATE TABLE `category`
 (
     `categoryNumber`         int(11) NOT NULL AUTO_INCREMENT,
     `name`       varchar(255) NOT NULL,
-    `desciption` longtext     NOT NULL,
+    `description` longtext     NOT NULL,
     PRIMARY KEY (`categoryNumber`)
 ) ENGINE=InnoDB;
 
 CREATE TABLE `discount`
 (
     `discountNumber`    int(11) NOT NULL AUTO_INCREMENT,
-    `type`  varchar(10)   NOT NULL,
+    `type`  varchar(50)   NOT NULL,
     `value` decimal(5, 2) NOT NULL,
     PRIMARY KEY (`discountNumber`)
 ) ENGINE=InnoDB;

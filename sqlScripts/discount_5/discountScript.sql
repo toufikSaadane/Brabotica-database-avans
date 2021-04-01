@@ -2,7 +2,12 @@
   the insert statememt
  */
 INSERT INTO discount (type, value)
-VALUES ('commercial',50);
+VALUES ('commercieel',25),
+       ('commercieel',50),
+       ('commercieel',75),
+       ('financieel',25),
+       ('financieel',50),
+       ('financieel',75);
 
 /**
   the uodate statememt
